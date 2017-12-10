@@ -1,0 +1,94 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <body class="align">
+
+  <div class="grid">
+
+    <form id="form_id" method="post" name="myform">
+
+      <header class="login__header">
+        <h3 class="login__title">Login</h3>
+      </header>
+<form name="form" action="" method="post">
+      <div class="login__body">
+
+        <div class="form__field">
+		<form>
+  <select name="username">
+    <option value="Hôpital Aziza Othmana"> Hôpital Aziza Othmana </option>
+    <option value="Centre de maternité et de néonatologie"> Centre de maternité et de néonatologie </option>
+    <option value="Hôpital La Rabta"> Hôpital La Rabta </option>
+	<option value="Institut Hédi-Raïs d'ophtalmologie de Tunis"> Institut Hédi-Raïs d'ophtalmologie de Tunis </option>
+	<option value="Hôpital d'enfants Béchir-Hamza"> Hôpital d'enfants Béchir-Hamza </option>
+	 <option value="Hôpital Slimene"> Hôpital Slimene </option>
+    <option value="Hôpital Militaire Principal d'Instruction de Tunis"> Hôpital Militaire Principal d'Instruction de Tunis </option>
+    <option value="Hôpital Ibn Eljazzar"> Hôpital Ibn Eljazzar </option>
+	<option value="Institut National de Neurologie Mongi Ben Hamida"> Institut National de Neurologie Mongi Ben Hamida </option>
+	<option value="Centre Nationale de Médcine Scolaire et Universitaire"> Centre Nationale de Médcine Scolaire et Universita... </option>
+  </select>
+</form
+        </div>
+
+        <div class="form__field">
+          <input type="password" placeholder="Password" id="password" value="aziza" required>
+        </div>
+
+      </div>
+
+      <footer class="login__footer">
+	  
+        <input  type="submit" value="Login"  id="submit" onclick="validate()" >
+
+        <p><span class="icon icon--info">?</span><a href="#">Forgot Password</a></p>
+		</form>
+      </footer>
+
+    </form>
+
+  </div>
+<script>
+  //var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+$_SESSION["username"] = username;
+$_SESSION["password"] = password;
+if ( username == "AzizaOthmena" && password == "aziza"){
+//alert("succes");
+window.open("file:///C:/Users/LENOVO/Desktop/2version/HTML/index.html",'_blank');
+}
+else{
+alert("You have left  attempt;");
+// Disabling fields after 3 attempts.
+//if( attempt == 0){
+//document.getElementById("username").disabled = true;
+//document.getElementById("password").disabled = true;
+//document.getElementById("submit").disabled = true;
+//return false;
+//}
+}
+}
+
+</script>
+<?php 
+$_SESSION["nomHopital"]=$_POST['username'];
+?>
+</body>
+  
+  
+</body>
+</html>

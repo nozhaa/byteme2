@@ -1,0 +1,226 @@
+<?php session_start();?>
+<!DOCTYPE html>
+<!--
+ * A Design by GraphBerry
+ * Author: GraphBerry
+ * Author URL: http://graphberry.com
+ * License: http://graphberry.com/pages/license
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Smak -Free Single page html template by GraphBerry</title>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/admincss.css">
+
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/jquery.bxslider.css">
+	<script src="js/modernizr.custom.js"></script>
+	<!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<?php
+$hostname = "localhost";
+$username = "id3941584_kamel";
+$password = "kamel123";
+
+
+$sql = mysqli_connect($hostname,$username,$password,"id3941584_tunihack");
+
+// Check connection
+if (mysqli_connect_error())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+
+?>
+	<div class="loader">
+		<div class="project-loader">
+			<div class="bubblingG">
+				<span id="bubblingG_1"></span>
+				<span id="bubblingG_2"></span>
+				<span id="bubblingG_3"></span>
+			</div>
+		</div>
+	</div>
+	<div class="loading" id="wrapper">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-smak navbar-fixed-top " id="navbar" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
+					<a class="navbar-brand animate" href="#"><img src="img/logo.png" alt="logo1"></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right animate">
+						<li><a href="#home">Accueil</a></li>
+						<li><a href="#services">Service</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+		<div style="position: fixed; z-index: -80; width: 100%; height: 100%"></div>
+		<section id="home" class="home home-fullscreen">
+			<div class="slide text-slider-wrapper">
+				<div class="container">
+						<li class="clearfix">
+							<span class="lead">Bienvenue dans votre espace </span>
+						</li>
+						
+				</div>
+			</div>
+			<a href="#services" class="go-to godown">
+				<span>
+					<span class="fa fa-angle-double-down fa-2x"></span>
+					<span class="fa fa-angle-double-down fa-2x"></span>
+					<span class="fa fa-angle-double-down fa-2x"></span>
+					<span class="fa fa-angle-double-down fa-2x"></span>
+					<span class="fa fa-angle-double-down fa-2x"></span>
+				</span>
+			</a>
+		</section>
+		<section id="services" class="gray">
+			<div class="container pad-bot-50">
+				<div class="heading">
+					<div></div>
+					<h1>Gestion des ressources </h1>
+					<div class="divider"><span></span></div>
+					<p></p>
+				</div>
+				<div class="row" id="counter">
+					<div class="col-sm-3">
+						<div class="service-item fadeInUp">
+							<div class="circle circle-l"> <p id="litP"/></div>
+							<h3> <input id="lit" type="radio" name="gestion" value="lit"  checked></input> &nbsp;Gestion des lits</h3>
+							<p class="font-m">Incrémenter et décrémenter le nombre des lits selon votre besoins</p>
+						</div>
+					</div> 
+					<div class="col-sm-3">
+						<div class="service-item fadeInDown">
+							<div class="circle circle-l"><p id="medP"/></i></div>
+							
+							<h3> <input id="med" type="radio" name="gestion" value="med"></input> &nbsp; Gestion de medecins </h3>
+							<FORM>
+<SELECT class="font-m" name="nom" >
+<OPTION>ORL
+<OPTION>Stomatologie et chirurgie maxillo-faciale
+<OPTION>Ophtalmologie
+<OPTION>Chirurgie thoracique
+<OPTION>Anesthésie réanimation
+<OPTION>Psychiatrie
+<OPTION>Imagerie médicale
+<OPTION>Anatomie
+</SELECT>
+</FORM>
+							
+
+							
+
+							<p class="font-m">Incrémenter et décrémenter le nombre des medecins selon votre besoins</p>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="service-item fadeInUp">
+							<div class="circle circle-l"><p id="ambulanceP"/></i></div>
+							<h3> <input id="ambulance" type="radio" name="gestion" value="ambulance"></input> &nbsp;Gestion d'ambulances</h3>
+							<p class="font-m">Incrémenter et décrémenter le nombre des ambulances selon votre besoins </p>
+						</div>
+					</div>
+				</div> <div class="button_group">
+
+
+	<button id="moins" onclick="sub()">- 1</button>
+	<button id="save" onclick="save()" >mettre à jour</button>
+	<button id="plus" onclick="add()">+ 1</button>
+</div>
+				
+				</form>
+			
+
+			</div>
+			
+		</section>
+		
+		
+		
+<script>
+// Set counter default to zero
+var counterLit = 0,counterAmbu = 0,counterMed = 0;
+
+// Display total
+//$("#counter").text(counter);
+   document.getElementById("litP").innerHTML = counterLit;
+      document.getElementById("medP").innerHTML = counterMed;
+   document.getElementById("ambulanceP").innerHTML = counterAmbu;
+
+
+function add() {
+
+
+if (document.getElementById('lit').checked) {
+counterLit = counterLit + 1;
+ document.getElementById('litP').innerHTML=counterLit;
+ <?php ?>
+}
+else if(document.getElementById('ambulance').checked){
+counterAmbu=counterAmbu+1;
+ document.getElementById('ambulanceP').innerHTML=counterAmbu;
+
+}
+else{
+counterMed=counterMed+1;
+ document.getElementById('medP').innerHTML=counterMed;
+
+}
+}
+function sub() {
+
+if (document.getElementById('lit').checked) {
+counterLit = counterLit - 1;
+ document.getElementById('litP').innerHTML=counterLit;
+ 
+}
+else if(document.getElementById('ambulance').checked){
+counterAmbu=counterAmbu-1;
+ document.getElementById('ambulanceP').innerHTML=counterAmbu;
+
+}
+else{
+counterMed=counterMed-1;
+ document.getElementById('medP').innerHTML=counterMed;
+
+}
+
+}
+
+</script>
+			
+			
+		</footer>
+	</div>
+	<!-- Load all jsavascrip files -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="js/jquery.label_better.js"></script>
+	<script type="text/javascript" src="js/jquery.mixitup.js"></script>
+	<script type="text/javascript" src="js/jquery.easypiechart.js"></script>
+	<script type="text/javascript" src="js/jquery.inview.js"></script>
+	<script type="text/javascript" src="js/countUp.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="js/grid.js"></script>
+	<script>
+	$(function() {
+		Grid.init();
+	});
+	</script>
+
+</body>
+</html>
